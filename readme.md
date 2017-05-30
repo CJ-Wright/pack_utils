@@ -16,3 +16,9 @@
 |pycifrw | [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pycifrw/badges/downloads.svg)](https://anaconda.org/conda-forge/pycifrw) |
 |pympler | [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pympler/badges/downloads.svg)](https://anaconda.org/conda-forge/pympler) |
 |codecov | [![Anaconda-Server Badge](https://anaconda.org/conda-forge/codecov/badges/downloads.svg)](https://anaconda.org/conda-forge/codecov) |
+
+
+Feel free to use this script, you just need to provide your GitHub username, 
+and password/token.
+
+`python -c 'from pack_utils.utils import main; main(username, password)'`
