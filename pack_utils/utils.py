@@ -1,14 +1,17 @@
 import requests
 import fire
 
+
 def main(user, password):
-    r = requests.get('https://api.github.com/user/teams', auth=(str(user), str(password)))
+    r = requests.get('https://api.github.com/user/teams',
+                     auth=(str(user), str(password)))
     a = r.json()
     b = [c for c in a if 'conda-forge' in c['organization']['html_url']]
     d = [z['name'] for z in b if z['name'] != 'all-members']
     d.sort()
 
-    template = '|{} | [![Anaconda-Server Badge](https://anaconda.org/conda-forge' \
+    template = '|{} | [![Anaconda-Server Badge]' \
+               '(https://anaconda.org/conda-forge' \
                '/{}/badges/downloads.svg)]' \
                '(https://anaconda.org/conda-forge/{}) |\n'
 
@@ -22,6 +25,7 @@ def main(user, password):
 and password/token.
 
 `python utils.py USERNAME PASSWORD`""")
+
 
 if __name__ == '__main__':
     fire.Fire(main)
