@@ -1,4 +1,5 @@
 import requests
+import fire
 
 def main(user, password):
     r = requests.get('https://api.github.com/user/teams', auth=(str(user), str(password)))
@@ -20,4 +21,7 @@ def main(user, password):
         f.write("""Feel free to use this script, you just need to provide your GitHub username, 
 and password/token.
 
-`python -c 'from pack_utils.utils import main; main(username, password)'`""")
+`python utils.py USERNAME PASSWORD`""")
+
+if __name__ == '__main__':
+    fire.Fire(main)
