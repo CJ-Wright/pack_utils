@@ -7,10 +7,10 @@ def main(user, password):
                      auth=(str(user), str(password)))
     a = r.json()
     b = [c for c in a if 'conda-forge' in c['organization']['html_url']]
-    d = [z['name'] for z in b if z['name'] != 'all-members']
+    d = [(z['name'], z['organization']['html_url']) for z in b if z['name'] != 'all-members']
     d.sort()
 
-    template = '|{} | [![Anaconda-Server Badge]' \
+    template = '|[{}]({}/{}-feedstock) | [![Anaconda-Server Badge]' \
                '(https://anaconda.org/conda-forge' \
                '/{}/badges/downloads.svg)]' \
                '(https://anaconda.org/conda-forge/{}) |\n'
@@ -19,7 +19,7 @@ def main(user, password):
         f.write('## Packages I help to maintain\n')
         f.write('| Package | Downloads |\n')
         f.write('|:---------:|:--------:|\n')
-        f.writelines([template.format(i, i, i) for i in d])
+        f.writelines([template.format(i, j, i, i, i) for i, j in d])
         f.write('\n\n')
         f.write("""Feel free to use this script, you just need to provide your GitHub username, 
 and password/token.
